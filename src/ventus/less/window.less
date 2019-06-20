@@ -260,6 +260,16 @@
   }
 }
 
+.wm-window.noclosable {
+  .wm-window-box {
+    header.wm-window-title {
+      button.wm-close {
+        display: none;
+      }
+    }
+  }
+}
+
 .wm-window.animated.minimizing,
 .wm-window.animated.maximazing {
   transform: translate3d(0, 0, 0);

@@ -35,7 +35,8 @@ function(Emitter, View) {
 			titlebar: true,
 			animations: true,
 			classname: '',
-			stayinspace: false
+			stayinspace: false,
+			closable: true,
     };
 
     if (options.animations) {
@@ -116,6 +117,9 @@ function(Emitter, View) {
 		this.stayinspace = (typeof options.stayinspace !== 'undefined') ?
 			options.stayinspace:
 			false;
+		this.closable = (typeof options.closable !== 'undefined') ?
+			options.closable:
+			true;
 	};
 
 	Window.prototype = {
@@ -399,6 +403,20 @@ function(Emitter, View) {
 
 		get resizable() {
 			return this._resizable;
+		},
+
+		set closable(value) {
+			if(!value) {
+				this.view.el.classList.add('noclosable');
+			}	else {
+				this.view.el.classList.remove('noclosable');
+			}
+
+			this._closable = !!value;
+		},
+
+		get resizable() {
+			return this._closable;
 		},
 
 		set closed(value) {}, // jshint ignore:line
