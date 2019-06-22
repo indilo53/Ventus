@@ -415,7 +415,7 @@ function(Emitter, View) {
 			this._closable = !!value;
 		},
 
-		get resizable() {
+		get closable() {
 			return this._closable;
 		},
 

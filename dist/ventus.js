@@ -1981,10 +1981,6 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;
 "use strict";
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;
 
-function _defineEnumerableProperties(obj, descs) { for (var key in descs) { var desc = descs[key]; desc.configurable = desc.enumerable = true; if ("value" in desc) desc.writable = true; Object.defineProperty(obj, key, desc); } return obj; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 /**
  * Ventus
  * Copyright © 2012 Ramón Lamana
@@ -1992,8 +1988,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
  */
 !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(/*! ventus/core/emitter */ "./ventus/core/emitter.js"), __webpack_require__(/*! ventus/core/view */ "./ventus/core/view.js"), __webpack_require__(/*! ventus/less/window.less */ "./ventus/less/window.less")], __WEBPACK_AMD_DEFINE_RESULT__ = (function (Emitter, View) {
 	'use strict';
-
-	var _resizable, _closed, _closed2, _destroyed, _destroyed2, _widget, _widget2, _titlebar, _titlebar2, _animations, _animations2, _width, _width2, _height, _height2, _x, _y, _x2, _y2, _z, _z2, _Window$prototype, _mutatorMap;
 
 	function isTouchEvent(e) {
 		return !!window.TouchEvent && e.originalEvent instanceof window.TouchEvent;
@@ -2079,7 +2073,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 		this.closable = typeof options.closable !== 'undefined' ? options.closable : true;
 	};
 
-	Window.prototype = (_Window$prototype = {
+	Window.prototype = {
 		_restore: null,
 		_moving: null,
 		_resizing: null,
@@ -2353,187 +2347,246 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 			}
 
 			this._closable = !!value;
-		}
+		},
 
-	}, _resizable = 'resizable', _mutatorMap = {}, _mutatorMap[_resizable] = _mutatorMap[_resizable] || {}, _mutatorMap[_resizable].get = function () {
-		return this._closable;
-	}, _closed = 'closed', _mutatorMap[_closed] = _mutatorMap[_closed] || {}, _mutatorMap[_closed].set = function (value) {}, _closed2 = 'closed', _mutatorMap[_closed2] = _mutatorMap[_closed2] || {}, _mutatorMap[_closed2].get = function () {
-		return this._closed;
-	}, _destroyed = 'destroyed', _mutatorMap[_destroyed] = _mutatorMap[_destroyed] || {}, _mutatorMap[_destroyed].set = function (value) {}, _destroyed2 = 'destroyed', _mutatorMap[_destroyed2] = _mutatorMap[_destroyed2] || {}, _mutatorMap[_destroyed2].get = function () {
-		return this._destroyed;
-	}, _widget = 'widget', _mutatorMap[_widget] = _mutatorMap[_widget] || {}, _mutatorMap[_widget].set = function (value) {
-		this._widget = value;
-	}, _widget2 = 'widget', _mutatorMap[_widget2] = _mutatorMap[_widget2] || {}, _mutatorMap[_widget2].get = function () {
-		return this._widget;
-	}, _titlebar = 'titlebar', _mutatorMap[_titlebar] = _mutatorMap[_titlebar] || {}, _mutatorMap[_titlebar].set = function (value) {
-		if (value) {
-			this.$titlebar.el.classList.remove('hide');
-		} else {
-			this.$titlebar.el.classList.add('hide');
-		}
+		get closable() {
+			return this._closable;
+		},
 
-		this._titlebar = value;
-	}, _titlebar2 = 'titlebar', _mutatorMap[_titlebar2] = _mutatorMap[_titlebar2] || {}, _mutatorMap[_titlebar2].get = function () {
-		return this._titlebar;
-	}, _animations = 'animations', _mutatorMap[_animations] = _mutatorMap[_animations] || {}, _mutatorMap[_animations].set = function (value) {
-		if (value) {
-			this.view.el.classList.add('animated');
-		} else {
-			this.view.el.classList.remove('animated');
-		}
+		set closed(value) {}, // jshint ignore:line
+		get closed() {
+			return this._closed;
+		},
 
-		this._animations = value;
-	}, _animations2 = 'animations', _mutatorMap[_animations2] = _mutatorMap[_animations2] || {}, _mutatorMap[_animations2].get = function () {
-		return this._animations;
-	}, _width = 'width', _mutatorMap[_width] = _mutatorMap[_width] || {}, _mutatorMap[_width].set = function (value) {
-		this.view.width = value;
-	}, _width2 = 'width', _mutatorMap[_width2] = _mutatorMap[_width2] || {}, _mutatorMap[_width2].get = function () {
-		return parseInt(this.view.width, 10);
-	}, _height = 'height', _mutatorMap[_height] = _mutatorMap[_height] || {}, _mutatorMap[_height].set = function (value) {
-		this.view.height = value;
-	}, _height2 = 'height', _mutatorMap[_height2] = _mutatorMap[_height2] || {}, _mutatorMap[_height2].get = function () {
-		return parseInt(this.view.height, 10);
-	}, _x = 'x', _mutatorMap[_x] = _mutatorMap[_x] || {}, _mutatorMap[_x].set = function (value) {
-		this.view.el.style.left = value + 'px';
-	}, _y = 'y', _mutatorMap[_y] = _mutatorMap[_y] || {}, _mutatorMap[_y].set = function (value) {
-		this.view.el.style.top = value + 'px';
-	}, _x2 = 'x', _mutatorMap[_x2] = _mutatorMap[_x2] || {}, _mutatorMap[_x2].get = function () {
-		return parseInt(this.view.el.style.left || 0, 10);
-	}, _y2 = 'y', _mutatorMap[_y2] = _mutatorMap[_y2] || {}, _mutatorMap[_y2].get = function () {
-		return parseInt(this.view.el.style.top || 0, 10);
-	}, _z = 'z', _mutatorMap[_z] = _mutatorMap[_z] || {}, _mutatorMap[_z].set = function (value) {
-		this.view.el.style.zIndex = value;
-	}, _z2 = 'z', _mutatorMap[_z2] = _mutatorMap[_z2] || {}, _mutatorMap[_z2].get = function () {
-		return parseInt(this.view.el.style.zIndex || 0, 10);
-	}, _defineProperty(_Window$prototype, 'open', function open() {
-		var _this = this;
+		set destroyed(value) {}, // jshint ignore:line
+		get destroyed() {
+			return this._destroyed;
+		},
 
-		return new Promise(function (done) {
-			_this.signals.emit('open', _this);
+		set widget(value) {
+			this._widget = value;
+		},
 
-			// Open animation.
-			_this.view.show();
-			_this.view.el.classList.add('opening');
-			_this.view.onAnimationEnd(function () {
-				_this.view.el.classList.remove('opening');
-				done();
-			}, _this);
-			_this._closed = false;
-		});
-	}), _defineProperty(_Window$prototype, 'close', function close() {
-		var _this2 = this;
+		get widget() {
+			return this._widget;
+		},
 
-		return new Promise(function (done) {
-			_this2.signals.emit('close', _this2);
+		set titlebar(value) {
+			if (value) {
+				this.$titlebar.el.classList.remove('hide');
+			} else {
+				this.$titlebar.el.classList.add('hide');
+			}
 
-			_this2.view.el.classList.add('closing');
-			_this2.view.onAnimationEnd(function () {
-				_this2.view.el.classList.remove('closing');
-				_this2.view.el.classList.add('closed');
-				_this2.view.hide();
+			this._titlebar = value;
+		},
 
-				_this2.signals.emit('closed', _this2);
-				done();
-			}, _this2);
+		get titlebar() {
+			return this._titlebar;
+		},
 
-			_this2._closed = true;
-		});
-	}), _defineProperty(_Window$prototype, 'destroy', function destroy() {
-		var _this3 = this;
+		set animations(value) {
+			if (value) {
+				this.view.el.classList.add('animated');
+			} else {
+				this.view.el.classList.remove('animated');
+			}
 
-		var destroy = function destroy() {
-			_this3.$content.empty();
-			_this3.signals.emit('destroyed', _this3);
-			_this3._destroyed = true;
-		};
+			this._animations = value;
+		},
 
-		this.signals.emit('destroy', this);
+		get animations() {
+			return this._animations;
+		},
 
-		if (!this.closed) {
-			this.close().then(function () {
-				return destroy();
+		set width(value) {
+			this.view.width = value;
+		},
+
+		get width() {
+			return parseInt(this.view.width, 10);
+		},
+
+		set height(value) {
+			this.view.height = value;
+		},
+
+		get height() {
+			return parseInt(this.view.height, 10);
+		},
+
+		set x(value) {
+			this.view.el.style.left = value + 'px';
+		},
+
+		set y(value) {
+			this.view.el.style.top = value + 'px';
+		},
+
+		get x() {
+			return parseInt(this.view.el.style.left || 0, 10);
+		},
+
+		get y() {
+			return parseInt(this.view.el.style.top || 0, 10);
+		},
+
+		set z(value) {
+			this.view.el.style.zIndex = value;
+		},
+
+		get z() {
+			return parseInt(this.view.el.style.zIndex || 0, 10);
+		},
+
+		open: function open() {
+			var _this = this;
+
+			return new Promise(function (done) {
+				_this.signals.emit('open', _this);
+
+				// Open animation.
+				_this.view.show();
+				_this.view.el.classList.add('opening');
+				_this.view.onAnimationEnd(function () {
+					_this.view.el.classList.remove('opening');
+					done();
+				}, _this);
+				_this._closed = false;
 			});
-		} else {
-			destroy();
-		}
-	}), _defineProperty(_Window$prototype, 'resize', function resize(w, h) {
-		this.width = w;
-		this.height = h;
-		return this;
-	}), _defineProperty(_Window$prototype, 'move', function move(x, y) {
-		this.x = x;
-		this.y = y;
-		return this;
-	}), _defineProperty(_Window$prototype, 'stamp', function stamp() {
-		this.restore = function () {
-			var size = {
-				width: this.width,
-				height: this.height
+		},
+		close: function close() {
+			var _this2 = this;
+
+			return new Promise(function (done) {
+				_this2.signals.emit('close', _this2);
+
+				_this2.view.el.classList.add('closing');
+				_this2.view.onAnimationEnd(function () {
+					_this2.view.el.classList.remove('closing');
+					_this2.view.el.classList.add('closed');
+					_this2.view.hide();
+
+					_this2.signals.emit('closed', _this2);
+					done();
+				}, _this2);
+
+				_this2._closed = true;
+			});
+		},
+		destroy: function destroy() {
+			var _this3 = this;
+
+			var destroy = function destroy() {
+				_this3.$content.empty();
+				_this3.signals.emit('destroyed', _this3);
+				_this3._destroyed = true;
 			};
 
-			var pos = {
-				x: this.x,
-				y: this.y
+			this.signals.emit('destroy', this);
+
+			if (!this.closed) {
+				this.close().then(function () {
+					return destroy();
+				});
+			} else {
+				destroy();
+			}
+		},
+		resize: function resize(w, h) {
+			this.width = w;
+			this.height = h;
+			return this;
+		},
+		move: function move(x, y) {
+			this.x = x;
+			this.y = y;
+			return this;
+		},
+
+
+		/**
+   * @return A function that restores this window
+   */
+		stamp: function stamp() {
+			this.restore = function () {
+				var size = {
+					width: this.width,
+					height: this.height
+				};
+
+				var pos = {
+					x: this.x,
+					y: this.y
+				};
+
+				return function () {
+					this.resize(size.width, size.height);
+					this.move(pos.x, pos.y);
+
+					return this;
+				};
+			}.apply(this);
+
+			return this.restore;
+		},
+		restore: function restore() {},
+		maximize: function maximize() {
+			this.view.el.classList.add('maximazing');
+
+			var endMaximize = function endMaximize() {
+				this.view.el.classList.remove('maximazing');
 			};
 
-			return function () {
-				this.resize(size.width, size.height);
-				this.move(pos.x, pos.y);
+			if (this.animations) {
+				this.view.onTransitionEnd(endMaximize, this);
+			} else {
+				endMaximize.call(this);
+			}
 
-				return this;
+			this.maximized = !this.maximized;
+			return this;
+		},
+		minimize: function minimize() {
+			this.view.el.classList.add('minimizing');
+
+			var endMinimize = function endMinimize() {
+				this.view.el.classList.remove('minimizing');
 			};
-		}.apply(this);
 
-		return this.restore;
-	}), _defineProperty(_Window$prototype, 'restore', function restore() {}), _defineProperty(_Window$prototype, 'maximize', function maximize() {
-		this.view.el.classList.add('maximazing');
+			if (this.animations) {
+				this.view.onTransitionEnd(endMinimize, this);
+			} else {
+				endMinimize.call(this);
+			}
 
-		var endMaximize = function endMaximize() {
-			this.view.el.classList.remove('maximazing');
-		};
-
-		if (this.animations) {
-			this.view.onTransitionEnd(endMaximize, this);
-		} else {
-			endMaximize.call(this);
+			this.minimized = !this.minimized;
+			return this;
+		},
+		focus: function focus() {
+			this.active = true;
+			return this;
+		},
+		blur: function blur() {
+			this.active = false;
+			return this;
+		},
+		toLocal: function toLocal(coord) {
+			return {
+				x: coord.x - this.x,
+				y: coord.y - this.y
+			};
+		},
+		toGlobal: function toGlobal(coord) {
+			return {
+				x: coord.x + this.x,
+				y: coord.y + this.y
+			};
+		},
+		append: function append(content) {
+			this.$content.append(content);
 		}
-
-		this.maximized = !this.maximized;
-		return this;
-	}), _defineProperty(_Window$prototype, 'minimize', function minimize() {
-		this.view.el.classList.add('minimizing');
-
-		var endMinimize = function endMinimize() {
-			this.view.el.classList.remove('minimizing');
-		};
-
-		if (this.animations) {
-			this.view.onTransitionEnd(endMinimize, this);
-		} else {
-			endMinimize.call(this);
-		}
-
-		this.minimized = !this.minimized;
-		return this;
-	}), _defineProperty(_Window$prototype, 'focus', function focus() {
-		this.active = true;
-		return this;
-	}), _defineProperty(_Window$prototype, 'blur', function blur() {
-		this.active = false;
-		return this;
-	}), _defineProperty(_Window$prototype, 'toLocal', function toLocal(coord) {
-		return {
-			x: coord.x - this.x,
-			y: coord.y - this.y
-		};
-	}), _defineProperty(_Window$prototype, 'toGlobal', function toGlobal(coord) {
-		return {
-			x: coord.x + this.x,
-			y: coord.y + this.y
-		};
-	}), _defineProperty(_Window$prototype, 'append', function append(content) {
-		this.$content.append(content);
-	}), _defineEnumerableProperties(_Window$prototype, _mutatorMap), _Window$prototype);
+	};
 
 	return Window;
 }).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
